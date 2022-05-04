@@ -6,7 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Card from "../UI/Card";
+import Card from "../UI/Card/Card";
 
 function createData(name: string, counter: number) {
   return { name, counter };
@@ -21,7 +21,7 @@ const BasicTable: React.FC<{
   return (
     <Card className="table">
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: 100, maxWidth: 500 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>User</TableCell>
