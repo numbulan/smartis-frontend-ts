@@ -1,17 +1,13 @@
 import "./Popup.css";
 import Button from "../Button/Button";
+import SmartisForm from "../SmartisForm/SmartisForm";
 
 function Popup(props: any) {
   return (
     <div className="popup">
       <div className="popup_inner">
         <h1>{props.text}</h1>
-        <Button type="button" className="negativ" onClick={props.closePopup}>
-          Abbrechen
-        </Button>
-        <Button type="button" className="positiv" onClick={props.addSmartis()}>
-          Senden
-        </Button>
+        <SmartisForm closePopup={props.closePopup} />
       </div>
     </div>
   );

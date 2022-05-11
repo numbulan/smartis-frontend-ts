@@ -1,7 +1,8 @@
+import { stringify } from "querystring";
 import React, { useState } from "react";
 import { isPropertySignature } from "typescript";
 import "./App.css";
-import BasicTable from "./Content/Table";
+import BasicTable from "./Content/Table/Table";
 import Button from "./UI/Button/Button";
 import Popup from "./UI/Popup/Popup";
 
@@ -27,31 +28,13 @@ function App() {
         if (res && res.data) {
           setUserList([...res.data]);
         }
-        console.log(setShowPopup);
       });
   }
   componentDidMount();
 
   const showPopupHandler = () => {
     setShowPopup(!showPopup);
-    console.log(showPopup);
   };
-
-  const data = {
-    to: "user2",
-    from: "user1",
-    message: "show me",
-  };
-
-  async function addSmartisFetch() {
-    fetch(API_HOST + "smartis/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-  }
 
   return (
     <div className="App">
@@ -62,11 +45,7 @@ function App() {
           Add
         </Button>
         {showPopup ? (
-          <Popup
-            text="Smartis vergeben"
-            closePopup={showPopupHandler}
-            addSmartis={addSmartisFetch}
-          />
+          <Popup text="Smartis vergeben" closePopup={showPopupHandler} />
         ) : null}
       </main>
     </div>
