@@ -14,7 +14,7 @@ function createData(name: string, counter: number) {
 }
 
 const BasicTable: React.FC<{
-  users: { name: string; id: number; counter: number }[];
+  users: { name: string; id: string; counter: number }[];
 }> = (props) => {
   let rows: any = [];
   props.users.map((user) => rows.push(createData(user.name, user.counter)));
