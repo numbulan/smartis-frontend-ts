@@ -1,6 +1,4 @@
 import "./Popup.css";
-import Button from "../Button/Button";
-import SmartisForm from "../SmartisForm/SmartisForm";
 
 function Popup(props: any) {
   return (

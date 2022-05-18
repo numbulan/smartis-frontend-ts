@@ -1,5 +1,3 @@
-import { userInfo } from "os";
-import { stringify } from "querystring";
 import BasicTable from "../Table/Table";
 
 const UserList: React.FC<{
@@ -21,6 +19,7 @@ const UserList: React.FC<{
     } else {
       userList.push({ name: user.partitionKey, id: user.rowKey, counter: 1 });
     }
+    return null;
   });
   userList.sort((a, b) => b.counter - a.counter);
 
