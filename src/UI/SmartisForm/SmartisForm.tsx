@@ -9,6 +9,7 @@ function SmartisForm() {
   const [smartisMessage, setSmartisMessage] = useState<string>("");
   const ctx = useContext(PopupContext);
   const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
+  //const API_HOST = "http://localhost:3000/";
 
   const toChangeHandler = (event: any) => {
     setSmartisTo(event.target.value);

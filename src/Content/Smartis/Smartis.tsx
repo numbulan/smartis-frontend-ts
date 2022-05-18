@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import BasicTable from "../Table/Table";
-import UserList from "../UserList/UserList";
+import SmartisList from "../SmartisList/SmartisList";
 
 function Smartis() {
   const [smartisList, setSmartisList] = useState([]);
   const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
+  // const API_HOST = "http://localhost:3000/";
+
   async function componentDidMount(user: string) {
     fetch(API_HOST + "smartis/smartis/" + user)
       .then((response) => response.json())
@@ -17,7 +18,7 @@ function Smartis() {
   useEffect(() => {
     componentDidMount("martin");
   }, []);
-  return <UserList users={smartisList} />;
+  return <SmartisList users={smartisList} />;
 }
 
 export default Smartis;

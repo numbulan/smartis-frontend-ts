@@ -1,9 +1,6 @@
-import { stringify } from "querystring";
 import React, { useState, useEffect } from "react";
-import { isPropertySignature } from "typescript";
 import "./App.css";
 import Smartis from "./Content/Smartis/Smartis";
-import BasicTable from "./Content/Table/Table";
 import UserList from "./Content/UserList/UserList";
 import PopupContext from "./store/popup-context";
 import Button from "./UI/Button/Button";
@@ -15,6 +12,7 @@ function App() {
   const [showPopup, setShowPopup] = useState(false);
   const [popupContent, setPopupContent] = useState(<SmartisForm />);
   const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
+  //const API_HOST = "http://localhost:3000/";
 
   async function componentDidMount() {
     fetch(API_HOST + "users")

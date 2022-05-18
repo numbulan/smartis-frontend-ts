@@ -1,5 +1,3 @@
-import { userInfo } from "os";
-import { stringify } from "querystring";
 import BasicTable from "../Table/Table";
 
 const UserList: React.FC<{
