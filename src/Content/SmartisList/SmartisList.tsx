@@ -1,7 +1,3 @@
-import { userInfo } from "os";
-import { stringify } from "querystring";
-import BasicTable from "../Table/Table";
-
 const SmartisList: React.FC<{
   users: { partitionKey: string; rowKey: string; message: string }[];
 }> = (props) => {
