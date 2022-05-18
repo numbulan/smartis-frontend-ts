@@ -22,6 +22,7 @@ const UserList: React.FC<{
       userList.push({ name: user.partitionKey, id: user.rowKey, counter: 1 });
     }
   });
+  userList.sort((a, b) => b.counter - a.counter);
 
   return <BasicTable users={userList} />;
 };

@@ -1,41 +1,23 @@
 import Button from "../Button/Button";
 import "./SmartisForm.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import PopupContext from "../../store/popup-context";
 
-function SmartisForm(props: any) {
-  const [smartisTo, setSmartisTo]: any = useState([]);
-  const [smartisFrom, setSmartisFrom]: any = useState([]);
-  const [smartisMessage, setSmartisMessage]: any = useState([]);
+function SmartisForm() {
+  const [smartisTo, setSmartisTo] = useState<string>("");
+  const [smartisFrom, setSmartisFrom] = useState<string>("");
+  const [smartisMessage, setSmartisMessage] = useState<string>("");
+  const ctx = useContext(PopupContext);
   const API_HOST = "http://localhost:3000/";
-  /*   const [smartisData, setSmartisData]: any = useState({
-    to: smartisTo,
-    from: smartisFrom,
-    message: smartisMessage,
-  }); */
 
   const toChangeHandler = (event: any) => {
     setSmartisTo(event.target.value);
-    /*     setSmartisData({
-      to: smartisTo,
-      from: smartisFrom,
-      message: smartisMessage,
-    }); */
   };
   const fromChangeHandler = (event: any) => {
     setSmartisFrom(event.target.value);
-    /*     setSmartisData({
-      to: smartisTo,
-      from: smartisFrom,
-      message: smartisMessage,
-    }); */
   };
   const messageChangeHandler = (event: any) => {
     setSmartisMessage(event.target.value);
-    /*     setSmartisData({
-      to: smartisTo,
-      from: smartisFrom,
-      message: smartisMessage,
-    }); */
   };
   async function addSmartisFetch(smartisData: {
     from: string;
@@ -57,8 +39,16 @@ function SmartisForm(props: any) {
       to: smartisTo,
       message: smartisMessage,
     };
-    addSmartisFetch(smartisData);
-    props.closePopup();
+    if (
+      smartisFrom.trim() !== "" &&
+      smartisTo.trim() !== "" &&
+      smartisMessage.trim() !== ""
+    ) {
+      addSmartisFetch(smartisData);
+      ctx.closePopup();
+    } else {
+      alert("No empty fields!");
+    }
   };
 
   return (
@@ -97,7 +87,7 @@ function SmartisForm(props: any) {
         </div>
       </div>
       <div>
-        <Button type="button" className="negativ" onClick={props.closePopup}>
+        <Button type="button" className="negativ" onClick={ctx.closePopup}>
           Abbrechen
         </Button>
         <Button type="button" className="positiv" onClick={sendFormHandler}>
