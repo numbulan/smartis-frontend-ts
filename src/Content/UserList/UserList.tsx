@@ -4,7 +4,7 @@ const UserList: React.FC<{
   users: { partitionKey: string; rowKey: string; message: string }[];
 }> = (props) => {
   let userList: { name: string; id: string; counter: number }[] = [];
-  props.users.map((user) => {
+  const placeholder = props.users.map((user) => {
     if (
       userList.some(
         (e) => e.name.toLowerCase() === user.partitionKey.toLowerCase()
