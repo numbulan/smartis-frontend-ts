@@ -4,7 +4,7 @@ const UserList: React.FC<{
   users: { partitionKey: string; rowKey: string; message: string }[];
 }> = (props) => {
   let userList: { name: string; id: string; counter: number }[] = [];
-  const placeholder = props.users.map((user) => {
+  props.users.map((user) => {
     if (
       userList.some(
         (e) => e.name.toLowerCase() === user.partitionKey.toLowerCase()
@@ -19,6 +19,7 @@ const UserList: React.FC<{
     } else {
       userList.push({ name: user.partitionKey, id: user.rowKey, counter: 1 });
     }
+    return null;
   });
   userList.sort((a, b) => b.counter - a.counter);
 
