@@ -4,7 +4,7 @@ import UserList from "../UserList/UserList";
 
 function Smartis() {
   const [smartisList, setSmartisList] = useState([]);
-  const API_HOST = "http://localhost:3000/";
+  const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
   async function componentDidMount(user: string) {
     fetch(API_HOST + "smartis/smartis/" + user)
       .then((response) => response.json())

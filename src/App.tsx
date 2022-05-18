@@ -14,8 +14,7 @@ function App() {
   const [userList, setUserList] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [popupContent, setPopupContent] = useState(<SmartisForm />);
-  const API_HOST = "http://localhost:3000/";
-  const list = [{ name: "hi", id: "asdljag", counter: 12 }];
+  const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
 
   async function componentDidMount() {
     fetch(API_HOST + "users")
