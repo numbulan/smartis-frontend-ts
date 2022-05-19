@@ -1,7 +1,9 @@
+import React from "react";
 import BasicTable from "../Table/Table";
 
 const UserList: React.FC<{
   users: { partitionKey: string; rowKey: string; message: string }[];
+  setSelectedUser: React.Dispatch<React.SetStateAction<string>>;
 }> = (props) => {
   let userList: { name: string; id: string; counter: number }[] = [];
   props.users.map((user) => {
@@ -23,7 +25,9 @@ const UserList: React.FC<{
   });
   userList.sort((a, b) => b.counter - a.counter);
 
-  return <BasicTable users={userList} />;
+  return (
+    <BasicTable users={userList} setSelectedUser={props.setSelectedUser} />
+  );
 };
 
 export default UserList;

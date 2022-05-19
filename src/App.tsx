@@ -10,9 +10,10 @@ import SmartisForm from "./UI/SmartisForm/SmartisForm";
 function App() {
   const [userList, setUserList] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
+  const [selectedUser, setSelectedUser] = useState("userp");
   const [popupContent, setPopupContent] = useState(<SmartisForm />);
-  const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
-  //const API_HOST = "http://localhost:3000/";
+  //const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
+  const API_HOST = "http://localhost:3000/";
 
   async function componentDidMount() {
     fetch(API_HOST + "users")
@@ -35,13 +36,14 @@ function App() {
   return (
     <PopupContext.Provider
       value={{
-        closePopup: () => showPopupHandler(<Smartis />),
+        closePopup: () =>
+          showPopupHandler(<Smartis selectedUser={selectedUser} />),
       }}
     >
       <div className="App">
         <h1>Smartis Counter</h1>
         <main>
-          <UserList users={userList} />
+          <UserList users={userList} setSelectedUser={setSelectedUser} />
           <Button
             type="button"
             className="positiv"

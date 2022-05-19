@@ -16,8 +16,16 @@ function createData(name: string, counter: number) {
 
 const BasicTable: React.FC<{
   users: { name: string; id: string; counter: number }[];
+  setSelectedUser: React.Dispatch<React.SetStateAction<string>>;
 }> = (props) => {
   const ctx = useContext(PopupContext);
+
+  const clickHandler = (event: any) => {
+    props.setSelectedUser(event.currentTarget.children[0].textContent);
+    console.log(event.currentTarget.children[0].textContent);
+    ctx.closePopup();
+  };
+
   let rows: any = [];
   props.users.map((user) => rows.push(createData(user.name, user.counter)));
 
@@ -44,7 +52,7 @@ const BasicTable: React.FC<{
               <TableRow
                 key={row.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                onClick={ctx.closePopup}
+                onClick={clickHandler}
               >
                 <TableCell component="th" scope="row">
                   {row.name}
