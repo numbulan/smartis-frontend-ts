@@ -1,7 +1,5 @@
 import { Button } from "@mui/material";
 import SmartisInfos from "../../UI/SmartisInfos/SmartisInfos";
-import { useContext } from "react";
-import PopupContext from "../../store/popup-context";
 
 const SmartisList: React.FC<{
   users: {
@@ -11,6 +9,7 @@ const SmartisList: React.FC<{
     from: string;
     timestamp: string;
   }[];
+  closePopup: Function;
 }> = (props) => {
   let smartisList: {
     name: string;
@@ -19,7 +18,10 @@ const SmartisList: React.FC<{
     from: string;
     date: string;
   }[] = [];
-  const ctx = useContext(PopupContext);
+
+  function closePopupHandler() {
+    props.closePopup(null);
+  }
   props.users.map((user) => {
     smartisList.push({
       name: user.partitionKey,
@@ -34,7 +36,7 @@ const SmartisList: React.FC<{
   return (
     <div>
       <SmartisInfos smartis={smartisList} />
-      <Button type="button" className="negativ" onClick={ctx.closePopup}>
+      <Button type="button" className="negativ" onClick={closePopupHandler}>
         Abbrechen
       </Button>
     </div>

@@ -1,15 +1,13 @@
 import Button from "../Button/Button";
 import "./SmartisForm.css";
-import { useState, useContext } from "react";
-import PopupContext from "../../store/popup-context";
+import { useState } from "react";
 
-function SmartisForm() {
+function SmartisForm(props: any) {
   const [smartisTo, setSmartisTo] = useState<string>("");
   const [smartisFrom, setSmartisFrom] = useState<string>("");
   const [smartisMessage, setSmartisMessage] = useState<string>("");
-  const ctx = useContext(PopupContext);
-  //const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
-  const API_HOST = "http://localhost:3000/";
+  const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
+  //const API_HOST = "http://localhost:3000/";
 
   const toChangeHandler = (event: any) => {
     setSmartisTo(event.target.value);
@@ -46,7 +44,7 @@ function SmartisForm() {
       smartisMessage.trim() !== ""
     ) {
       addSmartisFetch(smartisData);
-      ctx.closePopup();
+      props.closePopup();
     } else {
       alert("No empty fields!");
     }
@@ -88,7 +86,7 @@ function SmartisForm() {
         </div>
       </div>
       <div>
-        <Button type="button" className="negativ" onClick={ctx.closePopup}>
+        <Button type="button" className="negativ" onClick={props.closePopup}>
           Abbrechen
         </Button>
         <Button type="button" className="positiv" onClick={sendFormHandler}>

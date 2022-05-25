@@ -3,14 +3,14 @@ import SmartisList from "../SmartisList/SmartisList";
 
 const Smartis: React.FC<{
   selectedUser: string;
+  closePopup: Function;
 }> = (props) => {
   const [smartisList, setSmartisList]: any = useState([]);
-  //const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
-  const API_HOST = "http://localhost:3000/";
+  const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
+  //const API_HOST = "http://localhost:3000/";
 
   async function componentDidMount() {
-    console.log(props.selectedUser);
-    fetch(API_HOST + "smartis/smartis/" + props.selectedUser)
+    fetch(API_HOST + "smartis/smartis/" + props.selectedUser.toLowerCase())
       .then((response) => response.json())
       .then((res) => {
         if (res && res.data) {
@@ -20,8 +20,8 @@ const Smartis: React.FC<{
   }
   useEffect(() => {
     componentDidMount();
-  }, []);
-  return <SmartisList users={smartisList} />;
+  });
+  return <SmartisList closePopup={props.closePopup} users={smartisList} />;
 };
 
 export default Smartis;

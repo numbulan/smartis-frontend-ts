@@ -1,14 +1,22 @@
+import Card from "../Card/Card";
+
 const SmartisItem: React.FC<{
   from: string;
   date: string;
   message: string;
 }> = (props) => {
+  const userName = props.from.charAt(0).toUpperCase() + props.from.slice(1);
+  const date = new Date(Date.parse(props.date));
   return (
-    <div>
-      <div>{props.from}</div>
-      <div>{props.date}</div>
+    <Card>
+      <div>
+        <label htmlFor="from">From: </label>
+        {userName}
+        <label htmlFor="on"> On: </label>
+        {date.toDateString()}
+      </div>
       <div>{props.message}</div>
-    </div>
+    </Card>
   );
 };
 

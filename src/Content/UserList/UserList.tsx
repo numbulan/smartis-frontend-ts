@@ -4,6 +4,7 @@ import BasicTable from "../Table/Table";
 const UserList: React.FC<{
   users: { partitionKey: string; rowKey: string; message: string }[];
   setSelectedUser: React.Dispatch<React.SetStateAction<string>>;
+  closePopup: Function;
 }> = (props) => {
   let userList: { name: string; id: string; counter: number }[] = [];
   props.users.map((user) => {
@@ -19,14 +20,20 @@ const UserList: React.FC<{
         userList[index].counter += 1;
       }
     } else {
-      userList.push({ name: user.partitionKey, id: user.rowKey, counter: 1 });
+      const userName =
+        user.partitionKey.charAt(0).toUpperCase() + user.partitionKey.slice(1);
+      userList.push({ name: userName, id: user.rowKey, counter: 1 });
     }
     return null;
   });
   userList.sort((a, b) => b.counter - a.counter);
 
   return (
-    <BasicTable users={userList} setSelectedUser={props.setSelectedUser} />
+    <BasicTable
+      users={userList}
+      closePopup={props.closePopup}
+      setSelectedUser={props.setSelectedUser}
+    />
   );
 };
 

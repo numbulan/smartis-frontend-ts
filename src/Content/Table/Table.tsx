@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,7 +8,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Card from "../../UI/Card/Card";
 import "./Table.css";
-import PopupContext from "../../store/popup-context";
 
 function createData(name: string, counter: number) {
   return { name, counter };
@@ -16,14 +15,12 @@ function createData(name: string, counter: number) {
 
 const BasicTable: React.FC<{
   users: { name: string; id: string; counter: number }[];
+  closePopup: Function;
   setSelectedUser: React.Dispatch<React.SetStateAction<string>>;
 }> = (props) => {
-  const ctx = useContext(PopupContext);
-
   const clickHandler = (event: any) => {
     props.setSelectedUser(event.currentTarget.children[0].textContent);
-    console.log(event.currentTarget.children[0].textContent);
-    ctx.closePopup();
+    props.closePopup("Smartis");
   };
 
   let rows: any = [];
