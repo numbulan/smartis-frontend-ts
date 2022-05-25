@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import SmartisList from "../SmartisList/SmartisList";
 
-function Smartis() {
-  const [smartisList, setSmartisList] = useState([]);
+const Smartis: React.FC<{
+  selectedUser: string;
+  closePopup: Function;
+}> = (props) => {
+  const [smartisList, setSmartisList]: any = useState([]);
   const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
-  // const API_HOST = "http://localhost:3000/";
+  //const API_HOST = "http://localhost:3000/";
 
-  async function componentDidMount(user: string) {
-    fetch(API_HOST + "smartis/smartis/" + user)
+  async function componentDidMount() {
+    fetch(API_HOST + "smartis/smartis/" + props.selectedUser.toLowerCase())
       .then((response) => response.json())
       .then((res) => {
         if (res && res.data) {
@@ -16,9 +19,9 @@ function Smartis() {
       });
   }
   useEffect(() => {
-    componentDidMount("martin");
-  }, []);
-  return <SmartisList users={smartisList} />;
-}
+    componentDidMount();
+  });
+  return <SmartisList closePopup={props.closePopup} users={smartisList} />;
+};
 
 export default Smartis;
