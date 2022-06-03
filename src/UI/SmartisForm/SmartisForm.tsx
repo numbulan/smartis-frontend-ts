@@ -1,6 +1,6 @@
 import Button from "../Button/Button";
 import { useState } from "react";
-import { Stack, Form, Col, Row, FormGroup } from "react-bootstrap";
+import { Stack, Form, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function SmartisForm(props: any) {
