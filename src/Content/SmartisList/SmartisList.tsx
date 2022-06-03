@@ -1,5 +1,5 @@
-import { Button } from "@mui/material";
 import SmartisInfos from "../../UI/SmartisInfos/SmartisInfos";
+import Button from "../../UI/Button/Button";
 
 const SmartisList: React.FC<{
   users: {
@@ -36,7 +36,7 @@ const SmartisList: React.FC<{
   return (
     <div>
       <SmartisInfos smartis={smartisList} />
-      <Button type="button" className="negativ" onClick={closePopupHandler}>
+      <Button type="button" className="danger" onClick={closePopupHandler}>
         Abbrechen
       </Button>
     </div>

@@ -13,8 +13,8 @@ function App() {
     setShowPopup(!showPopup);
   };
   const [popupContent, setPopupContent] = useState("smartisform");
-  const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
-  //const API_HOST = "http://localhost:3000/";
+  //const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
+  const API_HOST = "http://localhost:3000/";
 
   async function componentDidMount() {
     fetch(API_HOST + "users")
@@ -39,8 +39,8 @@ function App() {
           setSelectedUser={setSelectedUser}
         />
         <Button
-          type="button"
-          className="positiv"
+          type="Button"
+          className="success"
           onClick={() => showPopupHandler("smartisform")}
         >
           Add

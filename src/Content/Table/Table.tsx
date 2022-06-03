@@ -7,7 +7,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Card from "../../UI/Card/Card";
-import "./Table.css";
 
 function createData(name: string, counter: number) {
   return { name, counter };
