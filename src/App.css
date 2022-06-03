@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 10;
 }
 
 .App-logo {
@@ -35,4 +36,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.table {
+  text-align: center;
+}
+
+#message {
+  width: 500;
+}
+
+.button {
+  margin: 10;
 }

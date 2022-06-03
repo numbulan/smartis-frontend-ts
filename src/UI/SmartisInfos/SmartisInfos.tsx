@@ -9,6 +9,10 @@ const SmartisInfos: React.FC<{
     date: string;
   }[];
 }> = (props) => {
+  let smartis = props.smartis;
+  smartis.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
   return (
     <div>
       {props.smartis.map((smartis) => (

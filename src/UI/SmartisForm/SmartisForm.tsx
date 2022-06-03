@@ -1,13 +1,14 @@
 import Button from "../Button/Button";
-import "./SmartisForm.css";
 import { useState } from "react";
+import { Stack, Form, Col, Row, FormGroup } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function SmartisForm(props: any) {
   const [smartisTo, setSmartisTo] = useState<string>("");
   const [smartisFrom, setSmartisFrom] = useState<string>("");
   const [smartisMessage, setSmartisMessage] = useState<string>("");
-  const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
-  //const API_HOST = "http://localhost:3000/";
+  //const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
+  const API_HOST = "http://localhost:3000/";
 
   const toChangeHandler = (event: any) => {
     setSmartisTo(event.target.value);
@@ -51,49 +52,76 @@ function SmartisForm(props: any) {
   };
 
   return (
-    <form>
-      <div className="form">
-        <div>
-          <label className="input" htmlFor="from">
-            From:
-          </label>
-          <input
-            className="input"
-            type="text"
-            id="from"
-            value={smartisFrom}
-            onChange={fromChangeHandler}
-          ></input>
-          <label className="input" htmlFor="to">
-            To:
-          </label>
-          <input
-            className="input"
-            type="text"
-            id="to"
-            value={smartisTo}
-            onChange={toChangeHandler}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="message">Message:</label>
-          <br />
-          <textarea
-            id="message"
-            value={smartisMessage}
-            onChange={messageChangeHandler}
-          ></textarea>
-        </div>
-      </div>
-      <div>
-        <Button type="button" className="negativ" onClick={props.closePopup}>
-          Abbrechen
-        </Button>
-        <Button type="button" className="positiv" onClick={sendFormHandler}>
-          Senden
-        </Button>
-      </div>
-    </form>
+    <Form>
+      <Stack gap={2} className="col-md-5 mx-auto">
+        <Form.Group as={Row} className="mb-3 row-cols-1" controlId="form">
+          <Stack direction="horizontal" gap={3}>
+            <Form.Label className="col text-left">
+              <label htmlFor="from" className="input">
+                From:
+              </label>
+            </Form.Label>
+            <Form.Label className="col">
+              <input
+                type="text"
+                id="from"
+                value={smartisFrom}
+                onChange={fromChangeHandler}
+              ></input>
+            </Form.Label>
+          </Stack>
+
+          <Stack direction="horizontal" gap={3}>
+            <Form.Label className="col">
+              <label className="input" htmlFor="to">
+                To:
+              </label>
+            </Form.Label>
+            <Form.Label className="col">
+              <input
+                type="text"
+                id="to"
+                value={smartisTo}
+                onChange={toChangeHandler}
+              ></input>
+            </Form.Label>
+          </Stack>
+
+          <Stack direction="horizontal" gap={3}>
+            <Form.Label className="col">
+              <label className="input" htmlFor="message">
+                Message:
+              </label>
+            </Form.Label>
+            <Form.Label className="col">
+              <textarea
+                id="message"
+                className="w-100"
+                value={smartisMessage}
+                onChange={messageChangeHandler}
+              ></textarea>
+            </Form.Label>
+          </Stack>
+
+          <Stack direction="horizontal" gap={3}>
+            <Button
+              type="button"
+              className="danger col"
+              onClick={props.closePopup}
+            >
+              Abbrechen
+            </Button>
+            <Button
+              type="button"
+              className="success col"
+              onClick={sendFormHandler}
+            >
+              Senden
+            </Button>
+          </Stack>
+        </Form.Group>
+      </Stack>
+    </Form>
   );
 }
 

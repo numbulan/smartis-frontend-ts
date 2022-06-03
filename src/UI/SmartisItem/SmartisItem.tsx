@@ -1,4 +1,4 @@
-import Card from "../Card/Card";
+import { Stack, Card } from "react-bootstrap";
 
 const SmartisItem: React.FC<{
   from: string;
@@ -8,14 +8,22 @@ const SmartisItem: React.FC<{
   const userName = props.from.charAt(0).toUpperCase() + props.from.slice(1);
   const date = new Date(Date.parse(props.date));
   return (
-    <Card>
-      <div>
-        <label htmlFor="from">From: </label>
-        {userName}
-        <label htmlFor="on"> On: </label>
-        {date.toDateString()}
-      </div>
-      <div>{props.message}</div>
+    <Card className="text-center">
+      <Stack gap={2} className="col-md-5 mx-auto">
+        <Stack direction="horizontal" gap={3}>
+          <Stack direction="horizontal" gap={1}>
+            <label htmlFor="from">From:</label>
+            {userName}
+          </Stack>
+          <Stack direction="horizontal" gap={1}>
+            <label htmlFor="on">On:</label>
+            {date.toDateString()}
+          </Stack>
+        </Stack>
+        <Stack direction="horizontal" gap={1}>
+          <div>{props.message}</div>
+        </Stack>
+      </Stack>
     </Card>
   );
 };
