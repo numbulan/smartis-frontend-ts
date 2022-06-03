@@ -1,5 +1,5 @@
 import { Button as BootstrapButton } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
 
 const Button = (props: any) => {
   return (
