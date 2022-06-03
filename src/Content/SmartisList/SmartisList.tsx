@@ -1,5 +1,6 @@
 import SmartisInfos from "../../UI/SmartisInfos/SmartisInfos";
 import Button from "../../UI/Button/Button";
+import React from "react";
 
 const SmartisList: React.FC<{
   users: {

@@ -1,4 +1,5 @@
 import SmartisItem from "../SmartisItem/SmartisItem";
+import React from "react";
 
 const SmartisInfos: React.FC<{
   smartis: {

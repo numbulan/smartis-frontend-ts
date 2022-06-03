@@ -1,4 +1,5 @@
 import { Stack, Card } from "react-bootstrap";
+import React from "react";
 
 const SmartisItem: React.FC<{
   from: string;

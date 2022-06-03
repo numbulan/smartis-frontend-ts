@@ -1,14 +1,14 @@
 import Button from "../Button/Button";
 import { useState } from "react";
 import { Stack, Form, Row } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
 
 function SmartisForm(props: any) {
   const [smartisTo, setSmartisTo] = useState<string>("");
   const [smartisFrom, setSmartisFrom] = useState<string>("");
   const [smartisMessage, setSmartisMessage] = useState<string>("");
-  //const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
-  const API_HOST = "http://localhost:3000/";
+  const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
+  //const API_HOST = "http://localhost:3000/";
 
   const toChangeHandler = (event: any) => {
     setSmartisTo(event.target.value);

@@ -1,5 +1,6 @@
 import SmartisForm from "../SmartisForm/SmartisForm";
 import Smartis from "../../Content/Smartis/Smartis";
+import React from "react";
 import "./Popup.css";
 
 function Popup(props: any) {

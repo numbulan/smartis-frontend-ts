@@ -3,6 +3,7 @@ import "./App.css";
 import UserList from "./Content/UserList/UserList";
 import Button from "./UI/Button/Button";
 import Popup from "./UI/Popup/Popup";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [userList, setUserList] = useState([]);
@@ -13,8 +14,8 @@ function App() {
     setShowPopup(!showPopup);
   };
   const [popupContent, setPopupContent] = useState("smartisform");
-  //const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
-  const API_HOST = "http://localhost:3000/";
+  const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
+  //const API_HOST = "http://localhost:3000/";
 
   async function componentDidMount() {
     fetch(API_HOST + "users")
