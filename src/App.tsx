@@ -28,6 +28,13 @@ function App() {
       });
   }
 
+  function forwardToLogin() {
+    window.location.replace(
+      "/.auth/login/aad?post_login_redirect_uri=https://gray-ocean-0a735c403.1.azurestaticapps.net"
+    );
+    checkLogin();
+  }
+
   async function componentDidMount() {
     fetch(API_HOST + "users")
       .then((response) => response.json())
@@ -40,7 +47,7 @@ function App() {
 
   useEffect(() => {
     checkLogin();
-  });
+  }, []);
   useEffect(() => {
     componentDidMount();
   }, [showPopup]);
@@ -73,9 +80,9 @@ function App() {
           </main>
         </div>
       ) : (
-        <a href="/.auth/login/aad?post_login_redirect_uri=https://gray-ocean-0a735c403.1.azurestaticapps.net">
+        <Button type="Button" className="success" onClick={forwardToLogin}>
           Login
-        </a>
+        </Button>
       )}
     </div>
   );
