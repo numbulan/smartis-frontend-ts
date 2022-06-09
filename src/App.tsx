@@ -72,7 +72,11 @@ function App() {
             ) : null}
           </main>
         </div>
-      ) : null}
+      ) : (
+        <a href="/.auth/login/aad?post_login_redirect_uri=https://gray-ocean-0a735c403.1.azurestaticapps.net">
+          Login
+        </a>
+      )}
     </div>
   );
 }
