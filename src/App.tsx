@@ -80,9 +80,11 @@ function App() {
           </main>
         </div>
       ) : (
-        <Button type="Button" className="success" onClick={forwardToLogin}>
-          Login
-        </Button>
+        <div className="text-center vertical-center">
+          <Button type="Button" className="success" onClick={forwardToLogin}>
+            Login
+          </Button>
+        </div>
       )}
     </div>
   );
