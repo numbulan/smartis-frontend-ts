@@ -81,7 +81,11 @@ function App() {
         </div>
       ) : (
         <div className="justify-content-center vertical-center">
-          <Button type="Button" className="success" onClick={forwardToLogin}>
+          <Button
+            type="Button"
+            className="success justify-content-center text-center"
+            onClick={forwardToLogin}
+          >
             Login
           </Button>
         </div>
