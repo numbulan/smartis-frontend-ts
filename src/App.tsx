@@ -80,7 +80,7 @@ function App() {
           </main>
         </div>
       ) : (
-        <div className="text-center vertical-center">
+        <div className="justify-content-center vertical-center">
           <Button type="Button" className="success" onClick={forwardToLogin}>
             Login
           </Button>
