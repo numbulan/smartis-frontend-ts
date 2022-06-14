@@ -10,7 +10,10 @@ function Popup(props: any) {
         {props.content === "smartisform" ? (
           <div>
             <h1>Smarties vergeben</h1>
-            <SmartisForm closePopup={props.closePopup} />
+            <SmartisForm
+              closePopup={props.closePopup}
+              activeUser={props.activeUser}
+            />
           </div>
         ) : (
           <div>

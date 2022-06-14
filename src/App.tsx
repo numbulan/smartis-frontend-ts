@@ -9,6 +9,7 @@ function App() {
   const [userList, setUserList] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [isLogedIn, setIsLogedIn] = useState(false);
+  const [activeUser, setActiveUser] = useState("");
   const [selectedUser, setSelectedUser] = useState("userp");
   const showPopupHandler = (content: string) => {
     setPopupContent(content);
@@ -24,6 +25,9 @@ function App() {
       .then((res) => {
         if (res && res.clientPrincipal) {
           setIsLogedIn(true);
+          let name = res.clientPrincipal.userDetails.split(".")[0];
+          setActiveUser(name);
+          console.log(activeUser);
         }
       });
   }
@@ -75,17 +79,14 @@ function App() {
                 content={popupContent}
                 closePopup={showPopupHandler}
                 selectedUser={selectedUser}
+                activeUser={activeUser}
               />
             ) : null}
           </main>
         </div>
       ) : (
-        <div className="justify-content-center vertical-center">
-          <Button
-            type="Button"
-            className="success justify-content-center text-center"
-            onClick={forwardToLogin}
-          >
+        <div className="justify-content-center text-center vertical-center">
+          <Button type="Button" className="success" onClick={forwardToLogin}>
             Login
           </Button>
         </div>
