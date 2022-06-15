@@ -5,7 +5,7 @@ import React from "react";
 
 function SmartisForm(props: any) {
   const [smartisTo, setSmartisTo] = useState<string>("");
-  const [smartisFrom, setSmartisFrom] = useState<string>("");
+  const [smartisFrom, setSmartisFrom] = useState<string>(props.activeUser);
   const [smartisMessage, setSmartisMessage] = useState<string>("");
   const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
   //const API_HOST = "http://localhost:3000/";
@@ -63,6 +63,7 @@ function SmartisForm(props: any) {
             </Form.Label>
             <Form.Label className="col">
               <input
+                className="w-100"
                 type="text"
                 id="from"
                 value={smartisFrom}
@@ -79,6 +80,7 @@ function SmartisForm(props: any) {
             </Form.Label>
             <Form.Label className="col">
               <input
+                className="w-100"
                 type="text"
                 id="to"
                 value={smartisTo}

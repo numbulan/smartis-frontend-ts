@@ -8,6 +8,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const [userList, setUserList] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
+  const [isLogedIn, setIsLogedIn] = useState(false);
+  const [activeUser, setActiveUser] = useState("");
   const [selectedUser, setSelectedUser] = useState("userp");
   const showPopupHandler = (content: string) => {
     setPopupContent(content);
@@ -16,6 +18,26 @@ function App() {
   const [popupContent, setPopupContent] = useState("smartisform");
   const API_HOST = "https://smartiscounterbackend.azurewebsites.net/";
   //const API_HOST = "http://localhost:3000/";
+
+  async function checkLogin() {
+    fetch("https://gray-ocean-0a735c403.1.azurestaticapps.net/.auth/me")
+      .then((response) => response.json())
+      .then((res) => {
+        if (res && res.clientPrincipal) {
+          setIsLogedIn(true);
+          let name = res.clientPrincipal.userDetails.split(".")[0];
+          setActiveUser(name);
+          console.log(activeUser);
+        }
+      });
+  }
+
+  function forwardToLogin() {
+    window.location.replace(
+      "/.auth/login/aad?post_login_redirect_uri=https://gray-ocean-0a735c403.1.azurestaticapps.net"
+    );
+    checkLogin();
+  }
 
   async function componentDidMount() {
     fetch(API_HOST + "users")
@@ -26,34 +48,49 @@ function App() {
         }
       });
   }
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
   useEffect(() => {
     componentDidMount();
   }, [showPopup]);
 
   return (
-    <div className="App">
-      <h1>Smartis Counter</h1>
-      <main>
-        <UserList
-          users={userList}
-          closePopup={showPopupHandler}
-          setSelectedUser={setSelectedUser}
-        />
-        <Button
-          type="Button"
-          className="success"
-          onClick={() => showPopupHandler("smartisform")}
-        >
-          Add
-        </Button>
-        {showPopup ? (
-          <Popup
-            content={popupContent}
-            closePopup={showPopupHandler}
-            selectedUser={selectedUser}
-          />
-        ) : null}
-      </main>
+    <div>
+      {isLogedIn ? (
+        <div className="App">
+          <h1>Smartis Counter</h1>
+          <main>
+            <UserList
+              users={userList}
+              closePopup={showPopupHandler}
+              setSelectedUser={setSelectedUser}
+            />
+            <Button
+              type="Button"
+              className="success"
+              onClick={() => showPopupHandler("smartisform")}
+            >
+              Add
+            </Button>
+            {showPopup ? (
+              <Popup
+                content={popupContent}
+                closePopup={showPopupHandler}
+                selectedUser={selectedUser}
+                activeUser={activeUser}
+              />
+            ) : null}
+          </main>
+        </div>
+      ) : (
+        <div className="justify-content-center text-center vertical-center">
+          <Button type="Button" className="success" onClick={forwardToLogin}>
+            Login
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
