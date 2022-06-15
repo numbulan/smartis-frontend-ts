@@ -21,7 +21,7 @@ const Smartis: React.FC<{
   }
   useEffect(() => {
     componentDidMount();
-  }, [props.selectedUser]);
+  });
   return <SmartisList closePopup={props.closePopup} users={smartisList} />;
 };
 
