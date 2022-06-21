@@ -56,9 +56,46 @@ function App() {
     componentDidMount();
   }, [showPopup]);
 
+  const inTeams = (): boolean => {
+    try {
+      return window.self !== window.top;
+    } catch (e) {
+      return true;
+    }
+  };
+
   return (
     <div>
-      {isLogedIn ? (
+      {inTeams() ? (
+        <div className="App">
+          <h1>Smartis Counter</h1>
+          <main>
+            <UserList
+              users={userList}
+              closePopup={showPopupHandler}
+              setSelectedUser={setSelectedUser}
+            />
+            <Button
+              type="Button"
+              className="success"
+              onClick={() => showPopupHandler("smartisform")}
+            >
+              Add
+            </Button>
+            {showPopup ? (
+              <Popup
+                content={popupContent}
+                closePopup={showPopupHandler}
+                selectedUser={selectedUser}
+                activeUser={activeUser}
+              />
+            ) : null}
+          </main>
+        </div>
+      ) : (
+        <p>hi there</p>
+      )}
+      {/* {isLogedIn ? (
         <div className="App">
           <h1>Smartis Counter</h1>
           <main>
@@ -90,7 +127,7 @@ function App() {
             Login
           </Button>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
