@@ -93,41 +93,46 @@ function App() {
           </main>
         </div>
       ) : (
-        <p>hi there</p>
+        <div>
+          {isLogedIn ? (
+            <div className="App">
+              <h1>Smartis Counter</h1>
+              <main>
+                <UserList
+                  users={userList}
+                  closePopup={showPopupHandler}
+                  setSelectedUser={setSelectedUser}
+                />
+                <Button
+                  type="Button"
+                  className="success"
+                  onClick={() => showPopupHandler("smartisform")}
+                >
+                  Add
+                </Button>
+                {showPopup ? (
+                  <Popup
+                    content={popupContent}
+                    closePopup={showPopupHandler}
+                    selectedUser={selectedUser}
+                    activeUser={activeUser}
+                  />
+                ) : null}
+              </main>
+            </div>
+          ) : (
+            <div className="justify-content-center text-center vertical-center">
+              <Button
+                type="Button"
+                className="success"
+                onClick={forwardToLogin}
+              >
+                Login
+              </Button>
+            </div>
+          )}
+        </div>
       )}
-      {/* {isLogedIn ? (
-        <div className="App">
-          <h1>Smartis Counter</h1>
-          <main>
-            <UserList
-              users={userList}
-              closePopup={showPopupHandler}
-              setSelectedUser={setSelectedUser}
-            />
-            <Button
-              type="Button"
-              className="success"
-              onClick={() => showPopupHandler("smartisform")}
-            >
-              Add
-            </Button>
-            {showPopup ? (
-              <Popup
-                content={popupContent}
-                closePopup={showPopupHandler}
-                selectedUser={selectedUser}
-                activeUser={activeUser}
-              />
-            ) : null}
-          </main>
-        </div>
-      ) : (
-        <div className="justify-content-center text-center vertical-center">
-          <Button type="Button" className="success" onClick={forwardToLogin}>
-            Login
-          </Button>
-        </div>
-      )} */}
     </div>
   );
 }
