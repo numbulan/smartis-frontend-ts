@@ -12,24 +12,26 @@ function Popup(props: any) {
   return (
     <Fragment>
       <Backdrop closePopup={props.closePopup} />
-      <div className="popup_inner">
-        {props.content === "smartisform" ? (
-          <Stack gap={3}>
-            <h1>Smarties vergeben</h1>
-            <SmartisForm
-              closePopup={props.closePopup}
-              activeUser={props.activeUser}
-            />
-          </Stack>
-        ) : (
-          <Stack gap={3}>
-            <h1 className="">Smarties von {props.selectedUser}</h1>
-            <Smartis
-              closePopup={props.closePopup}
-              selectedUser={props.selectedUser}
-            />
-          </Stack>
-        )}
+      <div className="popup">
+        <div className="popup_inner">
+          {props.content === "smartisform" ? (
+            <Stack gap={3}>
+              <h1>Smarties vergeben</h1>
+              <SmartisForm
+                closePopup={props.closePopup}
+                activeUser={props.activeUser}
+              />
+            </Stack>
+          ) : (
+            <Stack gap={3}>
+              <h1 className="">Smarties von {props.selectedUser}</h1>
+              <Smartis
+                closePopup={props.closePopup}
+                selectedUser={props.selectedUser}
+              />
+            </Stack>
+          )}
+        </div>
       </div>
     </Fragment>
   );
