@@ -11,7 +11,9 @@ function SmartisForm(props: any) {
   //const API_HOST = "http://localhost:3000/";
 
   const toChangeHandler = (event: any) => {
-    setSmartisTo(event.target.value);
+    if (event.target.value.toLowerCase() !== smartisFrom.toLowerCase()) {
+      setSmartisTo(event.target.value);
+    }
   };
   const fromChangeHandler = (event: any) => {
     setSmartisFrom(event.target.value);
@@ -62,13 +64,14 @@ function SmartisForm(props: any) {
               </label>
             </Form.Label>
             <Form.Label className="col">
-              <input
+              <label>{smartisFrom}</label>
+              {/*               <input
                 className="w-100"
                 type="text"
                 id="from"
                 value={smartisFrom}
                 onChange={fromChangeHandler}
-              ></input>
+              ></input> */}
             </Form.Label>
           </Stack>
 
