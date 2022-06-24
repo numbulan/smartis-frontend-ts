@@ -10,7 +10,7 @@ function App() {
   const [showPopup, setShowPopup] = useState(false);
   const [isLogedIn, setIsLogedIn] = useState(false);
   const [activeUser, setActiveUser] = useState("");
-  const [selectedUser, setSelectedUser] = useState("userp");
+  const [selectedUser, setSelectedUser] = useState("");
   const showPopupHandler = (content: string) => {
     setPopupContent(content);
     setShowPopup(!showPopup);
@@ -68,7 +68,7 @@ function App() {
     <div>
       {inTeams() ? (
         <div className="App">
-          <h1>Smartis Counter</h1>
+          <h1>Smarties Counter</h1>
           <main>
             <UserList
               users={userList}

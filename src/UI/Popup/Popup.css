@@ -12,10 +12,10 @@
 
 .popup_inner {
   position: absolute;
-  left: 20%;
-  right: 20%;
-  top: 20%;
-  bottom: 20%;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: auto;
   margin: auto;
   background: white;
   overflow-y: auto;
