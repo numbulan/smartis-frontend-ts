@@ -88,6 +88,7 @@ function App() {
                 closePopup={showPopupHandler}
                 selectedUser={selectedUser}
                 activeUser={activeUser}
+                showPopup={showPopup}
               />
             ) : null}
           </main>
