@@ -10,7 +10,7 @@ function Backdrop(props: any) {
 
 function Popup(props: any) {
   return (
-    <Modal onHide={props.closePopup}>
+    <Modal show={true} onHide={props.closePopup}>
       <Modal.Header closeButton>
         {props.content === "smartisform" ? (
           <Modal.Title>Smarties vergeben</Modal.Title>
