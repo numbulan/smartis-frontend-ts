@@ -65,13 +65,6 @@ function SmartisForm(props: any) {
             </Form.Label>
             <Form.Label className="col">
               <label>{smartisFrom}</label>
-              {/*               <input
-                className="w-100"
-                type="text"
-                id="from"
-                value={smartisFrom}
-                onChange={fromChangeHandler}
-              ></input> */}
             </Form.Label>
           </Stack>
 
@@ -82,13 +75,13 @@ function SmartisForm(props: any) {
               </label>
             </Form.Label>
             <Form.Label className="col">
-              <input
+              <Form.Control
                 className="w-100"
                 type="text"
                 id="to"
                 value={smartisTo}
                 onChange={toChangeHandler}
-              ></input>
+              />
             </Form.Label>
           </Stack>
 
@@ -99,12 +92,11 @@ function SmartisForm(props: any) {
               </label>
             </Form.Label>
             <Form.Label className="col">
-              <textarea
+              <Form.Control
                 id="message"
-                className="w-100"
                 value={smartisMessage}
                 onChange={messageChangeHandler}
-              ></textarea>
+              />
             </Form.Label>
           </Stack>
 
